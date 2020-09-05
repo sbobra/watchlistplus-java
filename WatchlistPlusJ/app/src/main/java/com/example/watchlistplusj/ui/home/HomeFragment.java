@@ -27,6 +27,8 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
+        binding.setLifecycleOwner(this);
+        binding.setHomeViewModel(homeViewModel);
         View root = binding.getRoot();
 
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
