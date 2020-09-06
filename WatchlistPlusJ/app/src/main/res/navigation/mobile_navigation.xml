@@ -25,5 +25,10 @@
         android:id="@+id/results_page"
         android:name="com.example.watchlistplusj.ui.results.ResultsFragment"
         android:label="@string/title_results"
-        tools:layout="@layout/fragment_results" />
+        tools:layout="@layout/fragment_results">
+        <argument
+            android:name="search_term"
+            app:argType="string"
+            android:defaultValue="" />
+    </fragment>
 </navigation>

@@ -31,19 +31,20 @@ public class HomeFragment extends Fragment {
         binding.setHomeViewModel(homeViewModel);
         View root = binding.getRoot();
 
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        homeViewModel.showListView.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override
-            public void onChanged(@Nullable String s) {
-                binding.textHome.setText(s);
-            }
-        });
-        binding.textHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavDirections action =
-                        HomeFragmentDirections
-                                .actionNavigationHomeToResultsPage();
-                Navigation.findNavController(v).navigate(action);
+            public void onChanged(Boolean b) {
+                View v = getView();
+                if (v != null && b) {
+                    HomeFragmentDirections.ActionNavigationHomeToResultsPage action =
+                            HomeFragmentDirections
+                                    .actionNavigationHomeToResultsPage();
+                    String searchTerm = homeViewModel.userInput.getValue();
+                    if (searchTerm != null) {
+                        action.setSearchTerm(searchTerm);
+                    }
+                    Navigation.findNavController(v).navigate(action);
+                }
             }
         });
         return root;

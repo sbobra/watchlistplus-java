@@ -1,19 +1,19 @@
 package com.example.watchlistplusj.ui.home;
 
+import android.view.View;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class HomeViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    public MutableLiveData<String> userInput = new MutableLiveData<>("");
+    public MutableLiveData<Boolean> showListView = new MutableLiveData<>(false);
 
-    public HomeViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
-    }
+    public HomeViewModel() { }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void onHomeClicked() {
+        showListView.setValue(true);
     }
 }
