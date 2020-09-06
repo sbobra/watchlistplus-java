@@ -4,4 +4,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_search">Search</string>
     <string name="title_results">Search</string>
+    <string name="search_prompt">Search for a film:</string>
+    <string name="search_go">Go</string>
 </resources>
