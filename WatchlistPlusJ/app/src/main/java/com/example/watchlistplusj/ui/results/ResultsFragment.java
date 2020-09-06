@@ -43,7 +43,7 @@ public class ResultsFragment extends Fragment {
         // TODO: activity lifecycle instead of fragment lifecycle
         // private val watchListViewModel: WatchlistViewModel by activityViewModels()
         resultsViewModel =
-                ViewModelProviders.of(this).get(ResultsViewModel.class);
+                ViewModelProviders.of(requireActivity()).get(ResultsViewModel.class);
         binding = FragmentResultsBinding.inflate(inflater, container, false);
         binding.setLifecycleOwner(this);
         binding.setResultsViewModel(resultsViewModel);
