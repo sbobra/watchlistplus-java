@@ -23,12 +23,11 @@ import retrofit2.Response;
 public class ResultsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
-    private MutableLiveData<ArrayList<Movie>> movies = new MutableLiveData<>();
+    private MutableLiveData<ArrayList<Movie>> movies = new MutableLiveData<>(new ArrayList<>());
 
     public ResultsViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is results fragment");
-        createMovieList();
         searchMovies();
     }
 
@@ -56,9 +55,14 @@ public class ResultsViewModel extends ViewModel {
                 if(response.isSuccessful()) {
                     assert response.body() != null;
                     List<TmdbMovie> movieList = response.body().results;
+                    // TODO: figure out why we can't use movies.getValue() here
+                    ArrayList<Movie> existingMovies = new ArrayList<>();
                     for (TmdbMovie movie : movieList) {
                         Log.i("ResultsViewModel", movie.title);
+                        existingMovies.add(new Movie(movie.id, movie.title));
                     }
+                    movies.setValue(existingMovies);
+//                    createMovieList();
                 } else {
                     assert response.errorBody() != null;
                     try {
