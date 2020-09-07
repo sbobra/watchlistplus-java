@@ -36,18 +36,21 @@ public class HomeFragment extends Fragment {
             public void onChanged(Boolean b) {
                 View v = getView();
                 if (v != null && b) {
-                    HomeFragmentDirections.ActionNavigationHomeToResultsPage action =
-                            HomeFragmentDirections
-                                    .actionNavigationHomeToResultsPage();
-                    String searchTerm = homeViewModel.userInput.getValue();
-                    if (searchTerm != null) {
-                        action.setSearchTerm(searchTerm);
-                    }
-                    Navigation.findNavController(v).navigate(action);
+                    navigateToResults(v, homeViewModel.userInput.getValue());
                 }
             }
         });
         return root;
+    }
+
+    private void navigateToResults(View v, String searchTerm) {
+        HomeFragmentDirections.ActionNavigationHomeToResultsPage action =
+                HomeFragmentDirections
+                        .actionNavigationHomeToResultsPage();
+        if (searchTerm != null) {
+            action.setSearchTerm(searchTerm);
+        }
+        Navigation.findNavController(v).navigate(action);
     }
 
     @Override
