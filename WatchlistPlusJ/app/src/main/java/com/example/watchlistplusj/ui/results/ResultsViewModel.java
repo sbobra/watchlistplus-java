@@ -34,9 +34,6 @@ public class ResultsViewModel extends ViewModel {
 
     public void createMovieList() {
         ArrayList<Movie> movieList = new ArrayList<>();
-        for (int i = 0; i < 50; i++) {
-            movieList.add(new Movie(i, "Movie " + i));
-        }
         movies.setValue(movieList);
     }
 
@@ -56,15 +53,14 @@ public class ResultsViewModel extends ViewModel {
                 if(response.isSuccessful()) {
                     assert response.body() != null;
                     List<TmdbMovie> movieList = response.body().results;
-                    // TODO: figure out why we can't use movies.getValue() here
                     ArrayList<Movie> existingMovies = new ArrayList<>();
                     for (TmdbMovie movie : movieList) {
                         Log.i("ResultsViewModel", movie.title);
                         existingMovies.add(new Movie(movie.id, movie.title));
                     }
-//                    existingMovies.addAll(movies.getValue());
-                    movies.getValue().addAll(existingMovies);
-//                    movies.setValue(existingMovies);
+                    existingMovies.addAll(0, movies.getValue());
+                    // This needs to be a DIFFERENT object reference to the list
+                    movies.setValue(existingMovies);
                 } else {
                     assert response.errorBody() != null;
                     try {
