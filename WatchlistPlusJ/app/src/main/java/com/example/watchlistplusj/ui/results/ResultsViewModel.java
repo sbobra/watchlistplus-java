@@ -23,11 +23,12 @@ import retrofit2.Response;
 public class ResultsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
-    private MutableLiveData<ArrayList<Movie>> movies = new MutableLiveData<>(new ArrayList<>());
+    private MutableLiveData<ArrayList<Movie>> movies = new MutableLiveData<>();
 
     public ResultsViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is results fragment");
+        createMovieList();
         searchMovies();
     }
 
@@ -61,8 +62,9 @@ public class ResultsViewModel extends ViewModel {
                         Log.i("ResultsViewModel", movie.title);
                         existingMovies.add(new Movie(movie.id, movie.title));
                     }
-                    movies.setValue(existingMovies);
-//                    createMovieList();
+//                    existingMovies.addAll(movies.getValue());
+                    movies.getValue().addAll(existingMovies);
+//                    movies.setValue(existingMovies);
                 } else {
                     assert response.errorBody() != null;
                     try {

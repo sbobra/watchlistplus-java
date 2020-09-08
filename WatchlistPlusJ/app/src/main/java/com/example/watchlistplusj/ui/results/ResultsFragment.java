@@ -63,11 +63,9 @@ public class ResultsFragment extends Fragment {
     }
 
     private void updateAdapter() {
-        resultsViewModel.getMovies().observe(getViewLifecycleOwner(), new Observer<ArrayList<Movie>>() {
-            @Override
-            public void onChanged(@Nullable ArrayList<Movie> movies) {
-                resultsAdapter.submitList(movies);
-            }
+        resultsViewModel.getMovies().observe(getViewLifecycleOwner(), movies -> {
+            Log.i("ResultsFragment", "onChanged");
+            resultsAdapter.submitList(movies);
         });
     }
 
