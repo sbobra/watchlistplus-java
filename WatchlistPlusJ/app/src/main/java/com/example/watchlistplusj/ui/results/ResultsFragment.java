@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import com.example.watchlistplusj.R;
 import com.example.watchlistplusj.databinding.FragmentResultsBinding;
 import com.example.watchlistplusj.ui.adapters.ResultsAdapter;
+import com.example.watchlistplusj.ui.api.TmdbMovie;
 import com.example.watchlistplusj.ui.models.Movie;
 
 import java.util.ArrayList;
@@ -65,6 +66,9 @@ public class ResultsFragment extends Fragment {
     private void updateAdapter() {
         resultsViewModel.getMovies().observe(getViewLifecycleOwner(), movies -> {
             Log.i("ResultsFragment", "onChanged");
+            for (Movie movie : movies) {
+                Log.i("Resultsfragment", "submitting list: " + movie.title);
+            }
             resultsAdapter.submitList(movies);
         });
     }
