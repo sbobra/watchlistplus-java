@@ -37,7 +37,7 @@ public class ResultsViewModel extends AndroidViewModel {
         mText = new MutableLiveData<>();
         mText.setValue("This is results fragment");
         createMovieList();
-        searchMovies();
+//        searchMovies();
     }
 
     public void createMovieList() {
@@ -95,6 +95,7 @@ public class ResultsViewModel extends AndroidViewModel {
 
     public void setSearchTerm(String searchTerm) {
         this.searchTerm = searchTerm;
+        searchMovies();
     }
 
     public void persistMovies(List<Movie> movies) {
