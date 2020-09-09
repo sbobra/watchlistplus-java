@@ -35,8 +35,8 @@ public class ResultsFragment extends Fragment {
 
         assert getArguments() != null;
         String searchTerm = ResultsFragmentArgs.fromBundle(getArguments()).getSearchTerm();
-        // TODO: do something with this search term
         Log.i("ResultsFragment", "Search term " + searchTerm);
+        resultsViewModel.setSearchTerm(searchTerm);
 
         initializeRecyclerView();
         updateText();
@@ -75,6 +75,16 @@ public class ResultsFragment extends Fragment {
 
     // update via livedata, can remove and update via databinding
     private void updateText() {
+        resultsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(@Nullable String s) {
+                binding.textNotifications.setText(s);
+            }
+        });
+    }
+
+    // update via livedata, can remove and update via databinding
+    private void printMovies() {
         resultsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

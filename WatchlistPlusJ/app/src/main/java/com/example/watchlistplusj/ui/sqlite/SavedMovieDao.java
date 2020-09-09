@@ -16,6 +16,9 @@ public interface SavedMovieDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(SavedMovie word);
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertAll(List<SavedMovie> movies);
+
     @Query("DELETE FROM saved_movie_table")
     void deleteAll();
 
