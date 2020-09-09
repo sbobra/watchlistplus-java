@@ -15,6 +15,7 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 
 import com.example.watchlistplusj.databinding.FragmentHomeBinding;
+import com.example.watchlistplusj.ui.results.FiveStarView;
 
 public class HomeFragment extends Fragment {
 
@@ -30,6 +31,9 @@ public class HomeFragment extends Fragment {
         binding.setLifecycleOwner(this);
         binding.setHomeViewModel(homeViewModel);
         View root = binding.getRoot();
+
+        binding.fiveStar.setHomeViewModel(homeViewModel);
+        homeViewModel.starRating.observe(getViewLifecycleOwner(), starRating -> binding.fiveStar.setRating(starRating));
 
         homeViewModel.showListView.observe(getViewLifecycleOwner(), new Observer<Boolean>() {
             @Override

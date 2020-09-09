@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.watchlistplusj.ui.results.FiveStarView.StarRating" />
+
+        <variable
+            name="homeViewModel"
+            type="com.example.watchlistplusj.ui.home.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/star0"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="@{() -> homeViewModel.onStarClicked(StarRating.ONE_STAR)}"
+            android:padding="2dp"
+            android:src="@drawable/star_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/star1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="@{() -> homeViewModel.onStarClicked(StarRating.TWO_STAR)}"
+            android:padding="2dp"
+            android:src="@drawable/star_black"
+            app:layout_constraintStart_toEndOf="@id/star0"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/star2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="@{() -> homeViewModel.onStarClicked(StarRating.THREE_STAR)}"
+            android:padding="2dp"
+            android:src="@drawable/star_black"
+            app:layout_constraintStart_toEndOf="@id/star1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/star3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="@{() -> homeViewModel.onStarClicked(StarRating.FOUR_STAR)}"
+            android:padding="2dp"
+            android:src="@drawable/star_black"
+            app:layout_constraintStart_toEndOf="@id/star2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/star4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="@{() -> homeViewModel.onStarClicked(StarRating.FIVE_STAR)}"
+            android:padding="2dp"
+            android:src="@drawable/star_black"
+            app:layout_constraintStart_toEndOf="@id/star3"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
