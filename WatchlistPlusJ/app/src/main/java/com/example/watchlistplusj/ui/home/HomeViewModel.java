@@ -21,7 +21,11 @@ public class HomeViewModel extends ViewModel {
         showListView.setValue(true);
     }
 
-    public void onStarClicked(FiveStarView.StarRating rating) {
-        starRating.setValue(rating);
+    public void onStarClicked(FiveStarView.StarRating newRating) {
+        FiveStarView.StarRating oldRating = starRating.getValue();
+        if (oldRating != null && oldRating.equals(newRating)) {
+            newRating = FiveStarView.StarRating.ZERO_STAR;
+        }
+        starRating.setValue(newRating);
     }
 }
