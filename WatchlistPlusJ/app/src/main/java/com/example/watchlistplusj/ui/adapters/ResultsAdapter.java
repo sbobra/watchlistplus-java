@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.watchlistplusj.databinding.ResultsItemViewBinding;
 import com.example.watchlistplusj.ui.models.Movie;
+import com.squareup.picasso.Picasso;
 
 public class ResultsAdapter extends ListAdapter<Movie, ResultsAdapter.MovieViewHolder> {
     ResultsItemViewBinding binding;
@@ -65,6 +66,11 @@ public class ResultsAdapter extends ListAdapter<Movie, ResultsAdapter.MovieViewH
 
         public void bindTo(Movie movie) {
             binding.setMovie(movie);
+                Picasso.get()
+                        .load(movie.imageUrl)
+                        .into(binding.poster);
+            //.placeholder(R.drawable.placeholder)
+
         }
     }
 }

@@ -9,10 +9,12 @@ import java.util.Objects;
 public class Movie {
     public int id;
     public String title;
+    public String imageUrl;
 
-    public Movie(int id, String title) {
+    public Movie(int id, String title, String imageUrl) {
         this.id = id;
         this.title = title;
+        this.imageUrl = imageUrl;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

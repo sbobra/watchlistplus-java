@@ -14,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class TmdbApiController {
     static final String API_KEY = "026a795344dd54a25466dc332d3da881";
     static final String BASE_URL = "https://api.themoviedb.org/3/";
+    static final String BASE_URL_IMAGES = "https://image.tmdb.org/t/p/w500/";
     Retrofit retrofit;
     TmdbApi tmdbApi;
 
@@ -36,6 +37,9 @@ public class TmdbApiController {
         call.enqueue(callback);
     }
 
+    public String getPosterPath(String path) {
+        return BASE_URL_IMAGES + path;
+    }
 
 
 }

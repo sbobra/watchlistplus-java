@@ -66,8 +66,8 @@ public class ResultsViewModel extends AndroidViewModel {
                     List<TmdbMovie> movieList = response.body().results;
                     ArrayList<Movie> existingMovies = new ArrayList<>();
                     for (TmdbMovie movie : movieList) {
-                        Log.i("ResultsViewModel", movie.title);
-                        existingMovies.add(new Movie(movie.id, movie.title));
+                        Log.i("ResultsViewModel", movie.poster_path);
+                        existingMovies.add(new Movie(movie.id, movie.title, controller.getPosterPath(movie.poster_path)));
                     }
                     existingMovies.addAll(0, movies.getValue());
                     // This needs to be a DIFFERENT object reference to the list
