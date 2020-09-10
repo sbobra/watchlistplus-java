@@ -40,6 +40,7 @@ public class HomeFragment extends Fragment {
             public void onChanged(Boolean b) {
                 View v = getView();
                 if (v != null && b) {
+                    homeViewModel.showListView.setValue(false);
                     navigateToResults(v, homeViewModel.userInput.getValue());
                 }
             }
