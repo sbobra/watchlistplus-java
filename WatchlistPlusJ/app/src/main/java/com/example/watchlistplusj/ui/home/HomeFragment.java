@@ -49,13 +49,13 @@ public class HomeFragment extends Fragment {
     }
 
     private void navigateToResults(View v, String searchTerm) {
-        HomeFragmentDirections.ActionNavigationHomeToResultsPage action =
-                HomeFragmentDirections
-                        .actionNavigationHomeToResultsPage();
-        if (searchTerm != null) {
-            action.setSearchTerm(searchTerm);
-        }
-        Navigation.findNavController(v).navigate(action);
+//        HomeFragmentDirections.ActionNavigationHomeToResultsPage action =
+//                HomeFragmentDirections
+//                        .actionNavigationHomeToResultsPage();
+//        if (searchTerm != null) {
+//            action.setSearchTerm(searchTerm);
+//        }
+//        Navigation.findNavController(v).navigate(action);
     }
 
     @Override

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -55,13 +56,13 @@ public class FiveStarView extends ConstraintLayout {
         Drawable d;
         for (AppCompatImageView img : imageViews) {
             d = img.getDrawable();
-            d.setColorFilter(new PorterDuffColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP));
+            d.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getContext(), R.color.black), PorterDuff.Mode.SRC_ATOP));
         }
 
         int value = rating.getValue();
         for (int i = 0; i < value; i++) {
             d = imageViews[i].getDrawable();
-            d.setColorFilter(new PorterDuffColorFilter(getResources().getColor(R.color.colorAccent), PorterDuff.Mode.SRC_ATOP));
+            d.setColorFilter(new PorterDuffColorFilter(ContextCompat.getColor(getContext(), R.color.colorAccent), PorterDuff.Mode.SRC_ATOP));
         }
     }
 

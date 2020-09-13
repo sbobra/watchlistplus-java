@@ -33,9 +33,10 @@ public class ResultsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         initializeBindingAndViewModel(inflater, container);
 
-        assert getArguments() != null;
-        String searchTerm = ResultsFragmentArgs.fromBundle(getArguments()).getSearchTerm();
-        Log.i("ResultsFragment", "Search term " + searchTerm);
+//        assert getArguments() != null;
+//        String searchTerm = ResultsFragmentArgs.fromBundle(getArguments()).getSearchTerm();
+//        Log.i("ResultsFragment", "Search term " + searchTerm);
+        String searchTerm = "test";
         resultsViewModel.setSearchTerm(searchTerm);
 
         initializeRecyclerView();
