@@ -30,6 +30,8 @@ public class ResultsViewModel extends AndroidViewModel {
     private MutableLiveData<ArrayList<Movie>> movies = new MutableLiveData<>();
     private String searchTerm;
     private SavedMovieRepository savedMovieRepository;
+    public MutableLiveData<String> userInput = new MutableLiveData<>("");
+
 
     public ResultsViewModel(Application application) {
         super(application);
@@ -96,6 +98,10 @@ public class ResultsViewModel extends AndroidViewModel {
     public void setSearchTerm(String searchTerm) {
         this.searchTerm = searchTerm;
         searchMovies();
+    }
+
+    public void onHomeClicked() {
+        // SEARCH
     }
 
     public void persistMovies(List<Movie> movies) {

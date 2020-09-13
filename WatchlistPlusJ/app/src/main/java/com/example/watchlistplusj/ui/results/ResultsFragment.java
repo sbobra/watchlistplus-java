@@ -79,7 +79,7 @@ public class ResultsFragment extends Fragment {
         resultsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                binding.textNotifications.setText(s);
+//                binding.textNotifications.setText(s);
             }
         });
     }
@@ -89,7 +89,7 @@ public class ResultsFragment extends Fragment {
         resultsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                binding.textNotifications.setText(s);
+//                binding.textNotifications.setText(s);
             }
         });
     }
