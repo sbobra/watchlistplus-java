@@ -28,7 +28,6 @@ public class ResultsViewModel extends AndroidViewModel {
 
     private MutableLiveData<String> mText;
     private MutableLiveData<ArrayList<Movie>> movies = new MutableLiveData<>();
-    private String searchTerm;
     private SavedMovieRepository savedMovieRepository;
     public MutableLiveData<String> userInput = new MutableLiveData<>("");
 
@@ -39,7 +38,6 @@ public class ResultsViewModel extends AndroidViewModel {
         mText = new MutableLiveData<>();
         mText.setValue("This is results fragment");
         createMovieList();
-//        searchMovies();
     }
 
     public void createMovieList() {
@@ -56,6 +54,7 @@ public class ResultsViewModel extends AndroidViewModel {
     }
 
     public void searchMovies() {
+        String searchTerm = userInput.getValue();
         if (searchTerm == null) {
             return;
         }
@@ -71,7 +70,7 @@ public class ResultsViewModel extends AndroidViewModel {
                         Log.i("ResultsViewModel", movie.poster_path != null ? movie.poster_path : "");
                         existingMovies.add(new Movie(movie.id, movie.title, controller.getPosterPath(movie.poster_path)));
                     }
-                    existingMovies.addAll(0, movies.getValue());
+//                    existingMovies.addAll(0, movies.getValue());
                     // This needs to be a DIFFERENT object reference to the list
                     movies.setValue(existingMovies);
 
@@ -93,15 +92,6 @@ public class ResultsViewModel extends AndroidViewModel {
                 Log.i("ResultsViewModel", Objects.requireNonNull(t.getMessage()));
             }
         });
-    }
-
-    public void setSearchTerm(String searchTerm) {
-        this.searchTerm = searchTerm;
-        searchMovies();
-    }
-
-    public void onHomeClicked() {
-        // SEARCH
     }
 
     public void persistMovies(List<Movie> movies) {

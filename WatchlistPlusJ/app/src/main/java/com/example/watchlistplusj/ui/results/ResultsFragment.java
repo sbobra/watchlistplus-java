@@ -36,8 +36,7 @@ public class ResultsFragment extends Fragment {
 //        assert getArguments() != null;
 //        String searchTerm = ResultsFragmentArgs.fromBundle(getArguments()).getSearchTerm();
 //        Log.i("ResultsFragment", "Search term " + searchTerm);
-        String searchTerm = "test";
-        resultsViewModel.setSearchTerm(searchTerm);
+//        resultsViewModel.setSearchTerm(searchTerm);
 
         initializeRecyclerView();
         updateText();
