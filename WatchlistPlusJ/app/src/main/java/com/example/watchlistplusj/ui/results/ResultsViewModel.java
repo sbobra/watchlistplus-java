@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class ResultsViewModel extends AndroidViewModel {
 
     private MutableLiveData<String> mText;
+    public MutableLiveData<Boolean> isLoading = new MutableLiveData<>(false);
     private MutableLiveData<ArrayList<Movie>> movies = new MutableLiveData<>();
     private SavedMovieRepository savedMovieRepository;
     public MutableLiveData<String> userInput = new MutableLiveData<>("");
@@ -58,10 +59,12 @@ public class ResultsViewModel extends AndroidViewModel {
         if (searchTerm == null) {
             return;
         }
+        isLoading.setValue(Boolean.TRUE);
         TmdbApiController controller = new TmdbApiController();
         controller.searchMovies(searchTerm, new Callback<TmdbMovieResponse>() {
             @Override
             public void onResponse(Call<TmdbMovieResponse> call, Response<TmdbMovieResponse> response) {
+                isLoading.setValue(Boolean.FALSE);
                 if(response.isSuccessful()) {
                     assert response.body() != null;
                     List<TmdbMovie> movieList = response.body().results;
@@ -89,6 +92,7 @@ public class ResultsViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(Call<TmdbMovieResponse> call, Throwable t) {
+                isLoading.setValue(Boolean.FALSE);
                 Log.i("ResultsViewModel", Objects.requireNonNull(t.getMessage()));
             }
         });
